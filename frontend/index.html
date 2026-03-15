@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Three Tier App</title>
+</head>
+<body>
+  <h1>Frontend is running 🚀</h1>
+
+  <button onclick="loadData()">Test Backend</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    function loadData() {
+      fetch('/api/users')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('output').innerText =
+            JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+          document.getElementById('output').innerText =
+            "Error connecting to backend";
+        });
+    }
+  </script>
+</body>
+</html>
